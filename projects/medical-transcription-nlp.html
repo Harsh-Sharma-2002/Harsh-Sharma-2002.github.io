@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Medical Transcription NLP | Harsh Sharma</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RepoScope | Harsh Sharma</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -12,62 +11,167 @@
 
   <!-- Navbar -->
   <nav class="max-w-6xl mx-auto flex justify-between items-center py-6 px-6">
-    <a href="../index.html" class="text-white font-semibold">
-      ← Back
+    <a href="../index.html" class="text-purple-400 hover:text-purple-300 transition">
+      ← Back to Home
     </a>
-    <h1 class="text-white font-semibold">RepoScope</h1>
+    <h1 class="text-white font-semibold">Medical Transcription NLP</h1>
   </nav>
 
   <!-- Hero -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h2 class="text-4xl font-bold text-white">RepoScope</h2>
-    <p class="text-purple-400 mt-4">Intelligent Repository Analysis Tool</p>
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-white">
+      Clinical Specialty Classification
+    </h2>
 
-    <div class="mt-6 flex space-x-6">
-      <a href="#" class="text-purple-400 hover:text-purple-300 transition">
-        GitHub Repository →
-      </a>
-      <a href="#" class="text-purple-400 hover:text-purple-300 transition">
-        Live Demo →
+    <p class="text-purple-400 mt-4 text-lg">
+      RoBERTa Embeddings + Random Forest for Medical Text Classification
+    </p>
+
+    <div class="mt-8 flex space-x-6">
+      <a href="https://github.com/Harsh-Sharma-2002/Medical_Transcription_NLP" target="_blank"
+         class="px-6 py-3 bg-purple-600 rounded-lg hover:bg-purple-500 transition shadow-lg hover:shadow-purple-500/30 text-white">
+        View Repository
       </a>
     </div>
   </section>
 
   <!-- Overview -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
+  <section class="max-w-5xl mx-auto px-6 mt-20">
     <h3 class="text-2xl font-semibold text-white">Overview</h3>
-    <p class="text-gray-400 mt-4 leading-relaxed">
-      Dummy description: RepoScope is a developer-focused tool that analyzes
-      large repositories, extracts contextual embeddings, and enables
-      intelligent querying over source code using vector retrieval.
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      This project focuses on automatic classification of medical transcriptions
+      into clinical specialties such as cardiology, radiology, orthopedics, and surgery.
+      
+      Instead of training a deep neural classifier end-to-end, the system uses 
+      transformer-based embeddings (RoBERTa) combined with a classical 
+      Random Forest classifier for efficient and interpretable prediction.
     </p>
   </section>
 
-  <!-- Architecture -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-semibold text-white">Architecture</h3>
-    <ul class="text-gray-400 mt-4 space-y-2 list-disc list-inside">
-      <li>Backend: FastAPI</li>
-      <li>Vector Database: FAISS</li>
-      <li>LLM Integration</li>
-      <li>Incremental indexing strategy</li>
+  <!-- Problem Statement -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Problem Statement</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Healthcare systems generate large volumes of unstructured clinical notes.
+      Efficiently categorizing these notes by specialty is essential for:
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Electronic Health Record (EHR) indexing</li>
+      <li>Automated document routing</li>
+      <li>Faster insurance claim processing</li>
+      <li>Downstream NLP tasks (NER, ICD coding, summarization)</li>
     </ul>
   </section>
 
-  <!-- Features -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-semibold text-white">Key Features</h3>
-    <ul class="text-gray-400 mt-4 space-y-2 list-disc list-inside">
-      <li>Semantic code retrieval</li>
-      <li>Context-aware PR analysis</li>
-      <li>Dependency-aware context expansion</li>
+  <!-- Architecture -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">System Architecture</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ol class="text-gray-400 mt-6 space-y-3 list-decimal list-inside">
+      <li>Select top-k most frequent specialties</li>
+      <li>Generate RoBERTa embeddings (mean pooled)</li>
+      <li>Encode labels using LabelEncoder</li>
+      <li>Apply Random Oversampling for class balance</li>
+      <li>Train RandomForest with GridSearchCV</li>
+      <li>Evaluate with classification report & confusion matrix</li>
+    </ol>
+  </section>
+
+  <!-- Model Design -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Model Design Decisions</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>Used <span class="text-white">roberta-base</span> for semantic embeddings</li>
+      <li>Mean pooling across token representations</li>
+      <li>Random Forest for robust non-linear classification</li>
+      <li>GridSearchCV for hyperparameter tuning</li>
+      <li>RandomOverSampler to address class imbalance</li>
     </ul>
+  </section>
+
+  <!-- Results -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Results</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The final model achieved:
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li><span class="text-white">~86% overall accuracy</span> on the test set</li>
+      <li>Balanced precision and recall across top specialties</li>
+      <li>Improved minority-class recall after oversampling</li>
+    </ul>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The confusion matrix and classification report are generated and saved
+      as part of the training pipeline.
+    </p>
+  </section>
+
+  <!-- Technical Stack -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Tech Stack</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-8 text-gray-400">
+
+      <div>
+        <h4 class="text-white font-semibold">NLP & ML</h4>
+        <ul class="list-disc list-inside">
+          <li>Hugging Face Transformers (RoBERTa)</li>
+          <li>Scikit-learn</li>
+          <li>RandomForestClassifier</li>
+          <li>GridSearchCV</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold">Data & Visualization</h4>
+        <ul class="list-disc list-inside">
+          <li>Pandas / NumPy</li>
+          <li>Imbalanced-learn (RandomOverSampler)</li>
+          <li>Matplotlib</li>
+          <li>Seaborn</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="max-w-5xl mx-auto px-6 mt-20 mb-24">
+    <h3 class="text-2xl font-semibold text-white">Why This Project Matters</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      This project demonstrates practical NLP system design:
+      combining transformer embeddings with classical ML models
+      for efficient training and strong performance without
+      requiring full fine-tuning of large language models.
+    </p>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      It highlights the tradeoff between deep learning complexity and
+      operational simplicity — showing that hybrid approaches can achieve
+      competitive performance while remaining computationally efficient.
+    </p>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-800 mt-24 py-6 text-center text-sm text-gray-500">
+  <footer class="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
     © 2026 Harsh Sharma
   </footer>
 
 </body>
 </html>
+

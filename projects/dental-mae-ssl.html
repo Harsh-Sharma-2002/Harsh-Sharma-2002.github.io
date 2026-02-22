@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dental MAE SSL | Harsh Sharma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0b0b0f] text-gray-300">
+
+  <!-- Navbar -->
+  <nav class="max-w-6xl mx-auto flex justify-between items-center py-6 px-6">
+    <a href="../index.html" class="text-purple-400 hover:text-purple-300 transition">
+      ← Back to Home
+    </a>
+    <h1 class="text-white font-semibold">Dental MAE SSL</h1>
+  </nav>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-white">
+      Self-Supervised Learning with Masked Autoencoders
+    </h2>
+
+    <p class="text-purple-400 mt-4 text-lg">
+      Vision Transformer-based MAE Pretraining on Dental Radiographs
+    </p>
+
+    <div class="mt-8 flex space-x-6">
+      <a href="https://github.com/Harsh-Sharma-2002/Dental-MAE-SSL" target="_blank"
+         class="px-6 py-3 bg-purple-600 rounded-lg hover:bg-purple-500 transition shadow-lg hover:shadow-purple-500/30 text-white">
+        View Repository
+      </a>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Introduction</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Dental imaging datasets often suffer from limited labeled data.
+      This project explores Self-Supervised Learning (SSL) using 
+      Masked Autoencoders (MAE) to learn meaningful visual representations 
+      from unlabeled dental X-ray images.
+    </p>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The objective is not classification, but representation learning —
+      enabling future transfer to tasks such as cavity detection, 
+      pathology identification, or tooth segmentation.
+    </p>
+  </section>
+
+  <!-- What is MAE -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">What is MAE?</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Masked Autoencoders (MAE) randomly mask a large portion of image patches
+      and train a model to reconstruct the missing content.
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Images resized to 128×128 / 224×224</li>
+      <li>Patch size: 16×16</li>
+      <li>Masking ratio: 60%</li>
+      <li>Encoder processes only visible patches</li>
+      <li>Decoder reconstructs full image</li>
+    </ul>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      This forces the encoder to learn structural and contextual
+      features of dental anatomy rather than memorizing pixel patterns.
+    </p>
+  </section>
+
+  <!-- Implementation Details -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Implementation Details</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>Framework: TensorFlow / Keras</li>
+      <li>Vision Transformer-style patch embedding</li>
+      <li>Projection dimension: 128</li>
+      <li>Layer normalization with epsilon 1e-6</li>
+      <li>Mean squared reconstruction loss</li>
+      <li>Trained for 100 epochs</li>
+      <li>Deterministic seed control for reproducibility</li>
+    </ul>
+  </section>
+
+  <!-- Training Pipeline -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Training Pipeline</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ol class="text-gray-400 mt-6 space-y-3 list-decimal list-inside">
+      <li>Load raw dental X-ray images</li>
+      <li>Resize and normalize inputs</li>
+      <li>Extract fixed-size patches</li>
+      <li>Randomly mask 60% of patches</li>
+      <li>Encode visible patches via ViT encoder</li>
+      <li>Reconstruct full image via lightweight decoder</li>
+      <li>Optimize reconstruction loss</li>
+    </ol>
+  </section>
+
+  <!-- Project Scope -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Project Scope</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      This project focuses strictly on self-supervised pretraining.
+      No downstream supervised classification or segmentation was implemented.
+    </p>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The learned encoder representations can later be fine-tuned
+      for diagnostic tasks with significantly fewer labeled examples.
+    </p>
+  </section>
+
+  <!-- Benefits -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Why This Matters</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>Reduces reliance on expensive medical annotations</li>
+      <li>Learns transferable structural features</li>
+      <li>Improves robustness in low-data medical settings</li>
+      <li>Establishes foundation for self-supervised medical imaging research</li>
+    </ul>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="max-w-5xl mx-auto px-6 mt-20 mb-24">
+    <h3 class="text-2xl font-semibold text-white">Tech Stack</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Python</li>
+      <li>TensorFlow / Keras</li>
+      <li>Vision Transformer architecture</li>
+      <li>NumPy</li>
+      <li>Matplotlib</li>
+      <li>Jupyter Notebook</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
+    © 2026 Harsh Sharma
+  </footer>
+
+</body>
+</html>

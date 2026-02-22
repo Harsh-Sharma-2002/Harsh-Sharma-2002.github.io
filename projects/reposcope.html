@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RepoScope | Harsh Sharma</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -12,60 +11,162 @@
 
   <!-- Navbar -->
   <nav class="max-w-6xl mx-auto flex justify-between items-center py-6 px-6">
-    <a href="../index.html" class="text-white font-semibold">
-      ← Back
+    <a href="../index.html" class="text-purple-400 hover:text-purple-300 transition">
+      ← Back to Home
     </a>
     <h1 class="text-white font-semibold">RepoScope</h1>
   </nav>
 
   <!-- Hero -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h2 class="text-4xl font-bold text-white">RepoScope</h2>
-    <p class="text-purple-400 mt-4">Intelligent Repository Analysis Tool</p>
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-white">
+      RepoScope
+    </h2>
 
-    <div class="mt-6 flex space-x-6">
-      <a href="#" class="text-purple-400 hover:text-purple-300 transition">
-        GitHub Repository →
-      </a>
-      <a href="#" class="text-purple-400 hover:text-purple-300 transition">
-        Live Demo →
+    <p class="text-purple-400 mt-4 text-lg">
+      Repository-Aware Code Intelligence & Review Backend
+    </p>
+
+    <div class="mt-8 flex space-x-6">
+      <a href="https://github.com/Harsh-Sharma-2002/RepoScope" target="_blank"
+         class="px-6 py-3 bg-purple-600 rounded-lg hover:bg-purple-500 transition shadow-lg hover:shadow-purple-500/30 text-white">
+        View Repository
       </a>
     </div>
   </section>
 
   <!-- Overview -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
+  <section class="max-w-5xl mx-auto px-6 mt-20">
     <h3 class="text-2xl font-semibold text-white">Overview</h3>
-    <p class="text-gray-400 mt-4 leading-relaxed">
-      Dummy description: RepoScope is a developer-focused tool that analyzes
-      large repositories, extracts contextual embeddings, and enables
-      intelligent querying over source code using vector retrieval.
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      RepoScope is a repository-aware code intelligence backend that applies 
+      retrieval-augmented generation (RAG) to explain and review code with 
+      full cross-file awareness.
+      
+      Instead of naive prompt stuffing, RepoScope performs structured 
+      repository indexing, semantic chunking, bounded vector retrieval, 
+      and deterministic context expansion before invoking an LLM.
     </p>
   </section>
 
-  <!-- Architecture -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-semibold text-white">Architecture</h3>
-    <ul class="text-gray-400 mt-4 space-y-2 list-disc list-inside">
-      <li>Backend: FastAPI</li>
-      <li>Vector Database: FAISS</li>
-      <li>LLM Integration</li>
-      <li>Incremental indexing strategy</li>
+  <!-- Core Capabilities -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Core Capabilities</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>Full repository semantic indexing</li>
+      <li>Cross-file contextual code explanations</li>
+      <li>Structured file-level code review</li>
+      <li>Repository-wide architectural assessment</li>
+      <li>Pluggable multi-provider LLM integration (BYOK)</li>
     </ul>
   </section>
 
-  <!-- Features -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-semibold text-white">Key Features</h3>
-    <ul class="text-gray-400 mt-4 space-y-2 list-disc list-inside">
-      <li>Semantic code retrieval</li>
-      <li>Context-aware PR analysis</li>
-      <li>Dependency-aware context expansion</li>
+  <!-- Architecture -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">System Architecture</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      RepoScope follows a layered backend architecture:
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>FastAPI API Layer</li>
+      <li>Service Layer (Retrieval, Prompting, LLM Dispatch)</li>
+      <li>Vector DB Layer (ChromaDB persistent collections)</li>
+      <li>Pluggable LLM Provider Abstraction</li>
     </ul>
+  </section>
+
+  <!-- Retrieval Pipeline -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Retrieval Pipeline</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ol class="text-gray-400 mt-6 space-y-3 list-decimal list-inside">
+      <li>Clone repository at HEAD (branch-aware)</li>
+      <li>Semantic, boundary-aware chunking of source files</li>
+      <li>L2-normalized vector embedding per chunk</li>
+      <li>Deterministic vector search with file-local filtering</li>
+      <li>Window expansion around anchor chunks</li>
+      <li>Prompt assembly with structured output constraints</li>
+    </ol>
+  </section>
+
+  <!-- Design Guarantees -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Design Guarantees</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>No same-file redundancy during retrieval</li>
+      <li>Strict file-local window expansion (never cross-file bleed)</li>
+      <li>Deterministic, bounded context assembly</li>
+      <li>Structured JSON output for reviews</li>
+      <li>Explicit provider selection (no silent fallback)</li>
+    </ul>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Tech Stack</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-8 text-gray-400">
+
+      <div>
+        <h4 class="text-white font-semibold">Backend</h4>
+        <ul class="list-disc list-inside">
+          <li>Python</li>
+          <li>FastAPI</li>
+          <li>Pydantic</li>
+          <li>Uvicorn</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold">Retrieval & ML</h4>
+        <ul class="list-disc list-inside">
+          <li>ChromaDB (Persistent Vector Store)</li>
+          <li>Sentence-Transformers (MiniLM)</li>
+          <li>Pluggable Embedding Providers (OpenAI, Gemini, Claude, Local)</li>
+          <li>Multi-Provider LLM Dispatch</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="max-w-5xl mx-auto px-6 mt-20 mb-24">
+    <h3 class="text-2xl font-semibold text-white">Why This Project Matters</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      RepoScope demonstrates production-aware RAG design for code intelligence.
+      It explicitly addresses real-world constraints such as:
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Repository scale and deterministic indexing</li>
+      <li>Context explosion under LLM token limits</li>
+      <li>Multi-provider LLM infrastructure constraints</li>
+      <li>Machine-readable structured outputs for automation</li>
+    </ul>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The system prioritizes retrieval correctness, architectural clarity,
+      and explicit control over flashy demos — making it suitable as a 
+      foundation for production-grade code review tooling.
+    </p>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-800 mt-24 py-6 text-center text-sm text-gray-500">
+  <footer class="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
     © 2026 Harsh Sharma
   </footer>
 

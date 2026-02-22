@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Evi-Agent | Harsh Sharma</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RepoScope | Harsh Sharma</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -12,60 +12,162 @@
 
   <!-- Navbar -->
   <nav class="max-w-6xl mx-auto flex justify-between items-center py-6 px-6">
-    <a href="../index.html" class="text-white font-semibold">
-      ← Back
+    <a href="../index.html" class="text-purple-400 hover:text-purple-300 transition">
+      ← Back to Home
     </a>
-    <h1 class="text-white font-semibold">RepoScope</h1>
+    <h1 class="text-white font-semibold">Evi-Agent</h1>
   </nav>
 
   <!-- Hero -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h2 class="text-4xl font-bold text-white">RepoScope</h2>
-    <p class="text-purple-400 mt-4">Intelligent Repository Analysis Tool</p>
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-white">
+      Agentic Evidence Retrieval System
+    </h2>
 
-    <div class="mt-6 flex space-x-6">
-      <a href="#" class="text-purple-400 hover:text-purple-300 transition">
-        GitHub Repository →
-      </a>
-      <a href="#" class="text-purple-400 hover:text-purple-300 transition">
-        Live Demo →
+    <p class="text-purple-400 mt-4 text-lg">
+      A policy-driven, memory-aware retrieval agent for scientific literature.
+    </p>
+
+    <div class="mt-8 flex space-x-6">
+      <a href="https://github.com/Harsh-Sharma-2002/evi-agent" target="_blank"
+         class="px-6 py-3 bg-purple-600 rounded-lg hover:bg-purple-500 transition shadow-lg hover:shadow-purple-500/30 text-white">
+        View Repository
       </a>
     </div>
   </section>
 
   <!-- Overview -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
+  <section class="max-w-5xl mx-auto px-6 mt-20">
     <h3 class="text-2xl font-semibold text-white">Overview</h3>
-    <p class="text-gray-400 mt-4 leading-relaxed">
-      Dummy description: RepoScope is a developer-focused tool that analyzes
-      large repositories, extracts contextual embeddings, and enables
-      intelligent querying over source code using vector retrieval.
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Evi-Agent is a minimal yet architecturally explicit agentic system for 
+      evidence-grounded question answering over scientific literature 
+      (e.g., PubMed abstracts).  
+
+      Unlike traditional RAG pipelines, this system implements a 
+      stateful agent with explicit control flow, hybrid memory tiers, 
+      deterministic stopping policies, and transparent decision logic.
     </p>
   </section>
 
-  <!-- Architecture -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-semibold text-white">Architecture</h3>
-    <ul class="text-gray-400 mt-4 space-y-2 list-disc list-inside">
-      <li>Backend: FastAPI</li>
-      <li>Vector Database: FAISS</li>
-      <li>LLM Integration</li>
-      <li>Incremental indexing strategy</li>
+  <!-- Core Design Philosophy -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Core Design Principles</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>Separation of <span class="text-white">Policy</span> and <span class="text-white">Mechanism</span></li>
+      <li>State-driven execution via a centralized <code>AgentState</code></li>
+      <li>Three-tier hybrid memory architecture</li>
+      <li>Deterministic stopping with bounded control flow</li>
+      <li>Safe external tool use (PubMed API)</li>
     </ul>
   </section>
 
-  <!-- Features -->
-  <section class="max-w-4xl mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-semibold text-white">Key Features</h3>
-    <ul class="text-gray-400 mt-4 space-y-2 list-disc list-inside">
-      <li>Semantic code retrieval</li>
-      <li>Context-aware PR analysis</li>
-      <li>Dependency-aware context expansion</li>
+  <!-- Architecture -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">System Architecture</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The system is implemented using LangGraph with explicit node transitions:
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Tier 1: Query Cache (LRU + TTL controlled)</li>
+      <li>Tier 2: Semantic Chunk Store (ChromaDB vector retrieval)</li>
+      <li>Tier 3: PubMed ingestion with safe network handling</li>
+      <li>Evidence scoring with similarity + recency + diversity bonus</li>
+      <li>Policy-based STOP vs FETCH_MORE decision node</li>
     </ul>
+  </section>
+
+  <!-- Memory Design -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Hybrid Memory Design</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <div class="mt-6 space-y-6 text-gray-400">
+
+      <div>
+        <h4 class="text-white font-semibold">Tier 1 – Query Cache</h4>
+        <p>Stores solved queries with payload-based reuse. Enforces TTL and LRU eviction. Policy-free by design.</p>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold">Tier 2 – Chunk Store</h4>
+        <p>Stores document chunks for fine-grained semantic retrieval. Enforces per-document diversity constraints.</p>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold">Conversational Memory</h4>
+        <p>Summary-only rolling memory updated periodically via LLM compression.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Retrieval & Scoring -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Retrieval & Scoring Logic</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Cosine similarity over MiniLM embeddings</li>
+      <li>Recency decay with exponential half-life</li>
+      <li>Diversity bonus across independent sources</li>
+      <li>Confidence gating via minimum distinct documents</li>
+      <li>Stagnation detection for early termination</li>
+    </ul>
+  </section>
+
+  <!-- Technical Stack -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Tech Stack</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-6 text-gray-400">
+
+      <div>
+        <h4 class="text-white font-semibold">Core</h4>
+        <ul class="list-disc list-inside">
+          <li>Python</li>
+          <li>LangGraph</li>
+          <li>ChromaDB</li>
+          <li>Sentence-Transformers (MiniLM)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold">Models</h4>
+        <ul class="list-disc list-inside">
+          <li>FLAN-T5 (local inference)</li>
+          <li>MiniLM embeddings</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="max-w-5xl mx-auto px-6 mt-20 mb-24">
+    <h3 class="text-2xl font-semibold text-white">Why This Project Matters</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Evi-Agent is not just a RAG implementation — it is an exploration of 
+      agent architecture, memory design, and policy-driven control.  
+
+      It demonstrates explicit reasoning about when to act, when to stop, 
+      and how to reuse prior computation safely — foundational capabilities 
+      for scalable autonomous AI systems.
+    </p>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-800 mt-24 py-6 text-center text-sm text-gray-500">
+  <footer class="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
     © 2026 Harsh Sharma
   </footer>
 
