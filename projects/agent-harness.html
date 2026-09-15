@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent Harness | Harsh Sharma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0b0b0f] text-gray-300">
+
+  <!-- Navbar -->
+  <nav class="max-w-6xl mx-auto flex justify-between items-center py-6 px-6">
+    <a href="../index.html" class="text-purple-400 hover:text-purple-300 transition">
+      ← Back to Home
+    </a>
+    <h1 class="text-white font-semibold">Agent Harness</h1>
+  </nav>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-white">
+      Agent Harness
+    </h2>
+
+    <p class="text-purple-400 mt-4 text-lg">
+      Modular Multi-Agent Orchestration System
+    </p>
+
+    <div class="mt-8 flex space-x-6">
+      <a href="https://github.com/Harsh-Sharma-2002/Agentic-harnesss" target="_blank"
+         class="px-6 py-3 bg-purple-600 rounded-lg hover:bg-purple-500 transition shadow-lg hover:shadow-purple-500/30 text-white">
+        View Repository
+      </a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Overview</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Agent Harness is a multi-agent orchestration platform built from scratch
+      with LangGraph, FastAPI, and Streamlit. A Base Orchestrator routes
+      incoming requests to specialized agents, each running through its own
+      isolated, private execution graph rather than a single shared reasoning
+      chain.
+
+      Originally built as a personal project, it is now also used as the
+      hands-on teaching tool for ASU's Semantic Web Mining course, where it
+      introduces students to agentic system design, LangGraph orchestration,
+      and observability.
+    </p>
+  </section>
+
+  <!-- Core Capabilities -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Core Capabilities</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <ul class="text-gray-400 mt-6 space-y-3 list-disc list-inside">
+      <li>Base Orchestrator routing requests to specialized agents</li>
+      <li>Isolated, private execution graphs per agent</li>
+      <li>Text2SQL agent with bounded schema discovery</li>
+      <li>Deterministic SQL safety validation before execution</li>
+      <li>Structured Pydantic outputs across agent boundaries</li>
+      <li>Full tracing and observability via LangSmith</li>
+    </ul>
+  </section>
+
+  <!-- Text2SQL Agent -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Text2SQL Agent</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The Text2SQL agent turns natural-language questions into SQL through a
+      bounded, multi-loop reasoning process:
+    </p>
+
+    <ol class="text-gray-400 mt-6 space-y-3 list-decimal list-inside">
+      <li>Bounded schema discovery, scoped to the relevant tables</li>
+      <li>Iterative query drafting with multi-loop reasoning</li>
+      <li>Deterministic safety validation before any query runs</li>
+      <li>Structured Pydantic output for downstream consumption</li>
+      <li>Full trace capture through LangSmith for debugging and review</li>
+    </ol>
+  </section>
+
+  <!-- Deployment -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Deployment</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      The system is containerized end to end with Docker Compose across five
+      services: a Postgres database, an Ollama model server, a one-shot
+      "ollama-init" container that pulls the model and exits, the FastAPI
+      backend, and the Streamlit UI, wired together with explicit health
+      and completion-based dependencies so the stack comes up in the right
+      order every time.
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Postgres database service</li>
+      <li>Ollama model server</li>
+      <li>One-shot Ollama model-pull init container</li>
+      <li>FastAPI backend, starting only once its dependencies are healthy</li>
+      <li>Streamlit UI, starting once the API is healthy</li>
+    </ul>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Cross-platform setup scripts make the whole stack reproducible on a
+      new machine with a single command.
+    </p>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="max-w-5xl mx-auto px-6 mt-20">
+    <h3 class="text-2xl font-semibold text-white">Tech Stack</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-8 text-gray-400">
+
+      <div>
+        <h4 class="text-white font-semibold">Backend & Orchestration</h4>
+        <ul class="list-disc list-inside">
+          <li>Python</li>
+          <li>LangGraph</li>
+          <li>FastAPI</li>
+          <li>Pydantic</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold">Interface & Infrastructure</h4>
+        <ul class="list-disc list-inside">
+          <li>Streamlit</li>
+          <li>Docker Compose</li>
+          <li>PostgreSQL</li>
+          <li>Ollama</li>
+          <li>LangSmith Tracing</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="max-w-5xl mx-auto px-6 mt-20 mb-24">
+    <h3 class="text-2xl font-semibold text-white">Why This Project Matters</h3>
+    <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      Agent Harness treats multi-agent systems as engineered software rather
+      than a single sprawling prompt. It explicitly addresses:
+    </p>
+
+    <ul class="text-gray-400 mt-6 space-y-2 list-disc list-inside">
+      <li>Isolating agent reasoning so one agent's context never leaks into another's</li>
+      <li>Bounding schema discovery and query generation for safety and cost</li>
+      <li>Structured, machine-readable outputs across agent boundaries</li>
+      <li>Full observability into every reasoning step, not just the final answer</li>
+      <li>Reproducible, containerized deployment for real use, not just a demo</li>
+    </ul>
+
+    <p class="text-gray-400 mt-6 leading-relaxed">
+      It is also the platform I use to teach these ideas directly, as the
+      hands-on tool for ASU's Semantic Web Mining course.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-6 text-center text-sm text-gray-500">
+    © 2026 Harsh Sharma
+  </footer>
+
+</body>
+</html>
